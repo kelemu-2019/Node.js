@@ -43,7 +43,9 @@ function createServer(port) {
 
   const server = http.createServer(function(request, response) {
     // TODO: Write your homework code here
+    console.log(request.url);
 
+    showState(state, request, response);
     response.end();
   });
 
