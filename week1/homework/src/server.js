@@ -13,8 +13,7 @@ const errorState = require('./statuserrorcode');
 function showState(state, request, response) {
   console.log('hi im in the function');
   let url = request.url;
-  //response.writeHead(200, { 'Content-Type': 'text/json' });
-  //console.log(url + 'initialState ' + state);
+
   switch (url) {
     case '/state':
       initialState(state, response);
@@ -44,10 +43,7 @@ function createServer(port) {
 
   const server = http.createServer(function(request, response) {
     // TODO: Write your homework code here
-    console.log(request.url);
 
-    // response.writeHead(200, { 'Content-Type': 'text/json' });
-    showState(state, request, response);
     response.end();
   });
 
