@@ -1,35 +1,22 @@
 'use strict';
 
-// TODO: Write the homework code in this file
 const commands = require('./commands');
 const program = require('commander');
 
 program
-  .command('add <task>')
-  .alias('a')
-  .description('Add a new to Do List.')
-  .action(task => {
-    commands.add(task);
-  });
+  .option('-a, --add <task>', 'add to the task', commands.add)
+  .option('-r, --remove <index>', 'Remove the task from the to Do List', commands.remove)
+  .option('-rs, --reset ', 'Remove all task from the to Do List', commands.reset)
+  .option('-l, --list', 'Remove the task from the to Do List', commands.list);
 
 program.parse(process.argv);
 
 program
-  .command('list')
-  .alias('l')
-  .description('Lists the to Do List.')
-  .action(() => {
-    commands.list();
-  });
-
-program.parse(process.argv);
-
-program
-  .command('remove <task>')
-  .alias('l')
-  .description('Remove the task from the to Do List.')
-  .action(task => {
-    commands.remove(task);
+  .command('update <index> [UpdateText]')
+  .alias('u')
+  .description('update the to do list')
+  .action((index, UpdateText) => {
+    commands.update(index, UpdateText);
   });
 
 program.parse(process.argv);
